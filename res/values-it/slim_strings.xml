@@ -959,6 +959,7 @@ aggiungere ulteriori punti di controllo. \'Rimuovi\' elimina la riga selezionata
     Questo settaggio è reimpostato dopo un riavvio.</string>
   <string name="adb_over_network_warning">ATTENZIONE: Quando ADB su rete è attivo, il tuo telefono è aperto ad intrusioni tramite tutte le reti connesse, incluse quella GSM!
     \n\nUsa questa funzione solo su reti sicure.\n\nVuoi veramente attivare questa funzione?</string>
+
   <string name="usb_mass_storage_title">Archivio di massa</string>
   <string name="usb_mass_storage_summary">Attiva archivio di massa USB</string>
   <string name="pie_control_title">SlimPIE</string>
@@ -1080,4 +1081,27 @@ aggiungere ulteriori punti di controllo. \'Rimuovi\' elimina la riga selezionata
   <string name="proximity_wake_summary">Controlla il sensore di prossimità prima di risvegliare lo schermo</string>
   <string name="disable_smart_cover_title">Impedisci attivazione risveglio intelligente</string>
   <string name="disable_smart_cover_desc">Impedisci il risveglio intelligente anche se il dispositivo lo supporta</string>
+
+    <!-- Lockscreen Notifications -->
+    <string name="lockscreen_notifications">Notifiche lockscreen</string>
+    <string name="lockscreen_notifications_summary">Mostra notifiche pendenti nella lockscreen</string>
+    <string name="pocket_mode">Modalità pocket</string>
+    <string name="pocket_mode_modes_alwayson">Sempre attiva</string>
+    <string name="pocket_mode_modes_alwayson_summary">Accende lo schermo e visualizza tutte le notifiche quando il dispositivo viene tolto dalla tasca. Spegne lo schermo quando il dispositivo viene rimesso in tasca.</string>
+    <string name="pocket_mode_modes_unreadnotificationsonly">Solo notifiche non lette</string>
+    <string name="pocket_mode_modes_unreadnotificationsonly_summary">Accende lo schermo e visualizza solo le notifiche non lette quando il dispositivo viene tolto dalla tasca. Spegne lo schermo quando il dispositivo viene rimesso in tasca.</string>
+    <string name="pocket_mode_modes_disabled">Disattivata</string>
+    <string name="wake_on_notification">Risveglio automatico</string>
+    <string name="wake_on_notification_summary">Risveglia il dispositivo quando arriva una notifica</string>
+    <string name="notifications_height">Limitatore notifiche</string>
+    <string name="notifications_height_summary">Numero di notifiche visualizzate di volta in volta</string>
+    <string name="lockscreen_notifications_color">Colore sfondo notifiche</string>
+    <string name="lockscreen_notifications_color_summary">Colore delle notifiche nella lockscreen</string>
+    <string name="lockscreen_notifications_type">Notifiche aggiuntive da visualizzare</string>
+    <string name="lockscreen_notification_types_nonclearable">Permanenti</string>
+    <string name="lockscreen_notification_types_lowpriority">Bassa priorità</string>
+    <string name="lockscreen_notifications_excluded_apps_title">Apps escluse</string>
+    <string name="lockscreen_notifications_excluded_apps_summary">Le apps escluse non mostreranno notifiche nella lockscreen</string>
+    <string name="privacy_mode">Modalità privacy</string>
+    <string name="privacy_mode_summary">Impedisce l\'espansione e l\'eliminazione delle notifiche e visualizza la sola icona per salvaguardare la privacy.</string>
 </resources>
