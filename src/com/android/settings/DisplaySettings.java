@@ -93,6 +93,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private ListPreference mScreenTimeoutPreference;
     private Preference mScreenSaverPreference;
+    
+    private boolean quickfix = true; 
 
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
@@ -142,7 +144,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (mNotificationPulse != null && mNotificationLight != null && mBatteryPulse != null) {
             if (getResources().getBoolean(
                     com.android.internal.R.bool.config_intrusiveNotificationLed)) {
-                 if (getResources().getBoolean(
+                 //if (quickfix) {
+		if (getResources().getBoolean(
                          com.android.internal.R.bool.config_multiColorNotificationLed)) {
                      mLightOptions.removePreference(mNotificationPulse);
                      updateLightPulseDescription();

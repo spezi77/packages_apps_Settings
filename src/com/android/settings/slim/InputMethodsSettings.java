@@ -58,6 +58,8 @@ public class InputMethodsSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mKeyboardRotationToggle;
     private ListPreference mKeyboardRotationTimeout;
     private CheckBoxPreference mShowEnterKey;
+		
+    private boolean quickfix = true; 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,8 +75,9 @@ public class InputMethodsSettings extends SettingsPreferenceFragment implements
 
         // Enable or disable mStatusBarImeSwitcher based on boolean value: config_show_cmIMESwitcher
         final Preference keyImeSwitcherPref = findPreference(KEY_IME_SWITCHER);
-        if (keyImeSwitcherPref != null) {
-            if (!getResources().getBoolean(com.android.internal.R.bool.config_show_IMESwitcher)) {
+        if (keyImeSwitcherPref != null) {		
+            //if (!quickfix) {
+	    if (getResources().getBoolean(com.android.internal.R.bool.config_show_IMESwitcher)) {
                 getPreferenceScreen().removePreference(keyImeSwitcherPref);
             } else {
                 mStatusBarImeSwitcher = (CheckBoxPreference) keyImeSwitcherPref;
