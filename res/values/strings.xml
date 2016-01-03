@@ -4931,4 +4931,8 @@
     <string name="allow_signature_fake_summary">Allow apps to bypass security systems by pretending to be a different app</string>
     <string name="allow_signature_fake_warning">Allowing apps to bypass security systems can lead to serious security and privacy problems! Check that only benign apps use the corresponding permission when this is active.</string>
 
+    <!-- Allow Trackball wake in display settings -->
+    <string name="trackball_wake_screen_title">Trackball wake</string>
+    <string name="trackball_wake_screen_summary">Trackball press wakes device</string>
+
 </resources>

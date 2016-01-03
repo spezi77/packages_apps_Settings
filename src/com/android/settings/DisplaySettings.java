@@ -77,6 +77,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged";
     private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
     private static final String KEY_SCREEN_OFF_GESTURE_SETTINGS = "screen_off_gesture_settings";
+    private static final String TRACKBALL_WAKE_SCREEN = "trackball_wake_screen";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -100,6 +101,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mWakeUpWhenPluggedOrUnplugged;
     private PreferenceCategory mWakeUpOptions;
     private CheckBoxPreference mProximityWake;
+    private CheckBoxPreference mTrackballWake;
 
     private final Configuration mCurConfig = new Configuration();
 
@@ -284,6 +286,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (counter == 2) {
             prefSet.removePreference(mWakeUpOptions);
         }
+
+        // Trackball wake
+        mTrackballWake = (CheckBoxPreference)
+            prefSet.findPreference(TRACKBALL_WAKE_SCREEN);
+        mTrackballWake.setChecked(Settings.System.getInt(getActivity().getContentResolver(), Settings.System.TRACKBALL_WAKE_SCREEN, 1) == 1);
 
         // respect device default configuration
         // true fades while false animates
@@ -591,6 +598,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (preference == mNotificationPulse) {
             boolean value = mNotificationPulse.isChecked();
             Settings.System.putInt(getContentResolver(), Settings.System.NOTIFICATION_LIGHT_PULSE,
+                    value ? 1 : 0);
+            return true;
+        } else if (preference == mTrackballWake) {
+            boolean value = mTrackballWake.isChecked();
+            Settings.System.putInt(getContentResolver(), Settings.System.TRACKBALL_WAKE_SCREEN,
                     value ? 1 : 0);
             return true;
         }
