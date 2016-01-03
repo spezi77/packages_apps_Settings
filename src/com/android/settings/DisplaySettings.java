@@ -49,6 +49,9 @@ import com.android.internal.view.RotationPolicy;
 import com.android.settings.DreamSettings;
 import com.android.settings.slim.DisplayRotation;
 
+import com.android.settings.utils.FileUtil;
+import com.android.settings.utils.CMDProcessor;
+
 import java.util.ArrayList;
 
 public class DisplaySettings extends SettingsPreferenceFragment implements
@@ -78,6 +81,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
     private static final String KEY_SCREEN_OFF_GESTURE_SETTINGS = "screen_off_gesture_settings";
     private static final String TRACKBALL_WAKE_SCREEN = "trackball_wake_screen";
+
+    private static final String REPLACE_CMD = "busybox sed -i \"/%s/ c %<s=%s\" /system/build.prop";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -149,15 +154,15 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         mLcdDensityPreference = (ListPreference) findPreference(KEY_LCD_DENSITY);
         if (mLcdDensityPreference != null) {
-            int defaultDensity = DisplayMetrics.DENSITY_DEVICE;
+            int defaultDensity = 182; //Slim Roms default for 240 DPI
             int currentDensity = Integer.valueOf(SystemProperties.get("ro.sf.lcd_density"));
             if (currentDensity < 10 || currentDensity >= 1000) {
                // Unsupported value, force default
                 currentDensity = defaultDensity;
             }
 
-            int factor = defaultDensity >= 480 ? 40 : 20;
-            int minimumDensity = defaultDensity - 4 * factor;
+            int factor = 20;
+            int minimumDensity = 142; //set static minimum to 142 DPI
             int currentIndex = -1;
             String[] densityEntries = new String[7];
             String[] densityValues = new String[7];
@@ -364,7 +369,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private void writeLcdDensityPreference(final Context context, int value) {
         try {
-            SystemProperties.set("persist.sys.lcd_density", Integer.toString(value));
+            Log.d(TAG, "Old LCD density: " + SystemProperties.get("ro.sf.lcd_density"));
+
+            FileUtil.getMount("rw");
+            new CMDProcessor().su.runWaitFor(String.format(REPLACE_CMD, "ro.sf.lcd_density", Integer.toString(value)));
+            FileUtil.getMount("ro");
+
+            Log.d(TAG, "New LCD density: " + SystemProperties.get("ro.sf.lcd_density"));
+
         } catch (RuntimeException e) {
             Log.e(TAG, "Unable to save LCD density");
             return;
@@ -375,7 +387,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             @Override
             protected void onPreExecute() {
                 ProgressDialog dialog = new ProgressDialog(context);
-                dialog.setMessage(getResources().getString(R.string.restarting_ui));
+                dialog.setMessage(getResources().getString(R.string.service_restarting));
                 dialog.setCancelable(false);
                 dialog.setIndeterminate(true);
                 dialog.show();
@@ -388,12 +400,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 } catch (InterruptedException e) {
                     // Ignore
                 }
-                // Restart the UI
-                try {
-                    am.restart();
-                } catch (RemoteException e) {
-                    Log.e(TAG, "Failed to restart");
-                }
+                // Reboot
+                new CMDProcessor().su.run("busybox reboot");
                 return null;
             }
         };
