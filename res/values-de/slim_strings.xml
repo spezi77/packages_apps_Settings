@@ -55,6 +55,11 @@
   <string name="notification_light_voicemail_title">Sprachnachricht</string>
   <string name="notification_light_choose_app">Anwendung auswählen</string>
   <string name="notification_light_add">Hinzufügen</string>
+  <string name="lcd_density">LCD Dichte</string>
+  <string name="dialog_title_lcd_density">LCD Dichte</string>
+  <string name="lcd_density_value_format">%d DPI</string>
+  <string name="lcd_density_default_value_format">%d DPI (Standard)</string>
+  <string name="restarting_ui">UI Neustart\u2026</string>
   <string name="edit_light_settings">LED-Einstellungen bearbeiten</string>
   <string name="pulse_speed_title">Blinkdauer und -frequenz</string>
   <string name="default_time">Normal</string>

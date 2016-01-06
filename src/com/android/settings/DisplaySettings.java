@@ -375,7 +375,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             new CMDProcessor().su.runWaitFor(String.format(REPLACE_CMD, "ro.sf.lcd_density", Integer.toString(value)));
             FileUtil.getMount("ro");
 
-            Log.d(TAG, "New LCD density: " + SystemProperties.get("ro.sf.lcd_density"));
+            Log.d(TAG, "New LCD density: " + Integer.toString(value));
 
         } catch (RuntimeException e) {
             Log.e(TAG, "Unable to save LCD density");
