@@ -362,7 +362,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     }
 
     private void updateLcdDensityPreferenceDescription(int currentDensity) {
-        final int summaryResId = currentDensity == DisplayMetrics.DENSITY_DEVICE
+        final int summaryResId = currentDensity == 182
                 ? R.string.lcd_density_default_value_format : R.string.lcd_density_value_format;
         mLcdDensityPreference.setSummary(getString(summaryResId, currentDensity));
     }
