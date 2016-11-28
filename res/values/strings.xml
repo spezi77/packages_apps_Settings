@@ -4935,8 +4935,4 @@
     <string name="trackball_wake_screen_title">Trackball wake</string>
     <string name="trackball_wake_screen_summary">Trackball press wakes device</string>
 
-    <!-- Advanced reboot options -->
-    <string name="advanced_reboot_title">Advanced reboot</string>
-    <string name="advanced_reboot_summary">When unlocked, include options in the power menu for rebooting into recovery or bootloader</string>
-
 </resources>
