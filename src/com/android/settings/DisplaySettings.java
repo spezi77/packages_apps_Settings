@@ -154,7 +154,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         mLcdDensityPreference = (ListPreference) findPreference(KEY_LCD_DENSITY);
         if (mLcdDensityPreference != null) {
-            int defaultDensity = 182; //Slim Roms default for 240 DPI
+            int defaultDensity = 180; //Slim Roms default for 240 DPI
             int currentDensity = Integer.valueOf(SystemProperties.get("ro.sf.lcd_density"));
             if (currentDensity < 10 || currentDensity >= 1000) {
                // Unsupported value, force default
@@ -162,7 +162,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
 
             int factor = 20;
-            int minimumDensity = 142; //set static minimum to 142 DPI
+            int minimumDensity = 140; //set static minimum to 140 DPI
             int currentIndex = -1;
             String[] densityEntries = new String[7];
             String[] densityValues = new String[7];
